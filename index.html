@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine?</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #ff9a9e, #fecfef);
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    margin-top: 60px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #fff;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin: 20px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff4b5c;
+    color: white;
+}
+
+#noBtn {
+    background-color: white;
+    color: black;
+    position: absolute;
+}
+
+#message {
+    font-size: 22px;
+    color: white;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Ojasvi, will you be my Valentine? ❤️</h1>
+    <img src="https://drive.google.com/file/d/1FC-qzcKixPVHqVqHRn-z9P8AgsJYShuF/view?usp=sharing" id="mainImage">
+    <br>
+    <button id="yesBtn">YES ❤️</button>
+    <button id="noBtn">NO 💔</button>
+    <div id="message"></div>
+</div>
+
+<script>
+
+let noClicks = 0;
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+const mainImage = document.getElementById("mainImage");
+
+function moveButton(){
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function handleNoClick(){
+    noClicks++;
+
+    if(noClicks == 1){
+        message.innerHTML = "😢 Why would you say no?";
+    }
+    else if(noClicks == 2){
+        message.innerHTML = "You know how much I love you ❤️";
+    }
+    else {
+        message.innerHTML = "Stop trying to say NO 😭💔";
+    }
+
+    moveButton();
+}
+
+// Desktop hover
+noBtn.addEventListener("mouseover", moveButton);
+
+// Mobile touch
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    handleNoClick();
+});
+
+// Fallback click
+noBtn.addEventListener("click", handleNoClick);
+
+document.getElementById("yesBtn").addEventListener("click", function(){
+    document.querySelector(".container").innerHTML = `
+        <h1>YAYYY!! ❤️🥰</h1>
+        <h2>I’m the luckiest person alive 💖</h2>
+        <img src="C:\Users\Programming.com\Downloads\WhatsApp Image 2026-02-13 at 4.35.18 PM">
+    `;
+});
+
+</script>
+
+</body>
+</html>
