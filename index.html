@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -127,3 +127,149 @@ document.getElementById("yesBtn").addEventListener("click", function(){
 
 
 
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #ff9a9e, #fecfef);
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 26px;
+    color: white;
+    line-height: 1.4;
+}
+
+img {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin: 20px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.buttons {
+    position: relative;
+    height: 120px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff4b5c;
+    color: white;
+}
+
+#noBtn {
+    background-color: white;
+    color: black;
+    position: absolute;
+    left: 60%;
+    top: 40px;
+}
+
+#message {
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+    min-height: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Ojasvi, will you be my Valentine? ❤️</h1>
+    <img src="2.jpeg" id="mainImage">
+    
+    <div class="buttons">
+        <button id="yesBtn">YES ❤️</button>
+        <button id="noBtn">NO 💔</button>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+
+let noClicks = 0;
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+function moveButton(){
+    const container = document.querySelector(".buttons");
+    const maxX = container.clientWidth - 100;
+    const maxY = container.clientHeight - 50;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function handleNoClick(){
+    noClicks++;
+
+    if(noClicks == 1){
+        message.innerHTML = "😢 Why would you say no?";
+    }
+    else if(noClicks == 2){
+        message.innerHTML = "You know how much I love you ❤️";
+    }
+    else {
+        message.innerHTML = "Stop trying to say NO 😭💔";
+    }
+
+    moveButton();
+}
+
+// Desktop
+noBtn.addEventListener("mouseover", moveButton);
+
+// Mobile
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    handleNoClick();
+});
+
+noBtn.addEventListener("click", handleNoClick);
+
+document.getElementById("yesBtn").addEventListener("click", function(){
+    document.querySelector(".container").innerHTML = `
+        <h1>YAYYY!! ❤️🥰</h1>
+        <h2>I’m the luckiest person alive 💖</h2>
+        <img src="1.jpeg" style="width:80%; max-width:300px; border-radius:20px;">
+    `;
+});
+
+</script>
+
+</body>
+</html>
