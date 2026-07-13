@@ -133,7 +133,6 @@ document.getElementById("yesBtn").addEventListener("click", function(){
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Will You Be My Valentine?</title>
 
 <style>
@@ -141,39 +140,31 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background: linear-gradient(to right, #ff9a9e, #fecfef);
+    height: 100vh;
     margin: 0;
-    padding: 20px;
     overflow: hidden;
 }
 
 .container {
-    max-width: 400px;
-    margin: auto;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 h1 {
-    font-size: 26px;
-    color: white;
-    line-height: 1.4;
+    font-size: 40px;
+    color: #fff;
 }
 
 img {
-    width: 80%;
-    max-width: 300px;
+    width: 250px;
     border-radius: 20px;
     margin: 20px 0;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.buttons {
-    position: relative;
-    height: 120px;
-}
-
 button {
-    padding: 12px 25px;
-    font-size: 16px;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 20px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -189,15 +180,12 @@ button {
     background-color: white;
     color: black;
     position: absolute;
-    left: 60%;
-    top: 40px;
 }
 
 #message {
-    font-size: 18px;
+    font-size: 22px;
     color: white;
     margin-top: 20px;
-    min-height: 30px;
 }
 </style>
 </head>
@@ -205,14 +193,11 @@ button {
 <body>
 
 <div class="container">
-    <h1>Ojasvi, will you be my Valentine? ❤️</h1>
-    <img src="2.jpeg" id="mainImage">
-    
-    <div class="buttons">
-        <button id="yesBtn">YES ❤️</button>
-        <button id="noBtn">NO 💔</button>
-    </div>
-
+    <h1> Sakshi, mujhse shaadi krogi? ❤️</h1>
+    <img src="https://drive.google.com/file/d/1E4va2Ri8QG2I1cikfFGfM6RfObXdrjoM/view?usp=sharing">
+    <br>
+    <button id="yesBtn">YES ❤️</button>
+    <button id="noBtn">NO 💔</button>
     <div id="message"></div>
 </div>
 
@@ -221,15 +206,11 @@ button {
 let noClicks = 0;
 const noBtn = document.getElementById("noBtn");
 const message = document.getElementById("message");
+const mainImage = document.getElementById("mainImage");
 
 function moveButton(){
-    const container = document.querySelector(".buttons");
-    const maxX = container.clientWidth - 100;
-    const maxY = container.clientHeight - 50;
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
@@ -250,22 +231,23 @@ function handleNoClick(){
     moveButton();
 }
 
-// Desktop
+// Desktop hover
 noBtn.addEventListener("mouseover", moveButton);
 
-// Mobile
+// Mobile touch
 noBtn.addEventListener("touchstart", function(e){
     e.preventDefault();
     handleNoClick();
 });
 
+// Fallback click
 noBtn.addEventListener("click", handleNoClick);
 
 document.getElementById("yesBtn").addEventListener("click", function(){
     document.querySelector(".container").innerHTML = `
         <h1>YAYYY!! ❤️🥰</h1>
         <h2>I’m the luckiest person alive 💖</h2>
-        <img src="1.jpeg" style="width:80%; max-width:300px; border-radius:20px;">
+        <img src="https://drive.google.com/file/d/1LKjt2-vyR7JYmdgXhEDTzdzxGXutBriw/view?usp=sharing">
     `;
 });
 
